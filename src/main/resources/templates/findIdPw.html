@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Identity by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../static/assets/css/main2.css" />
+		<noscript><link rel="stylesheet" href="../static/assets/css/noscript2.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+						<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+					<button class="button" onclick="show_id()">아이디 찾기 </button>
+                     <button class="button" onclick="show_login_aca()">비밀번호 찾기</button>
+						</header>
+
+
+						<form method="post" action="#">
+							<div class="fields" id="id_box" style="display:none;">
+													<hr />
+                     <h3 align="center">아이디 찾기</h3>
+               		<div class="col-6 col-12-medium" style="margin:0 auto;">
+                  	<div class="box">
+                     <label>가입시 사용한 이메일을 입력해주세요.
+                     <input type="email" name="email" id="email"  placeholder="EMAIL"  style="margin: 0 auto; width:80%;">
+					</label>
+                    <br>
+							<ul class="actions special">
+								<li><a href="addUser.html" class="button">찾기(alert로 결과값)</a></li>
+							</ul>
+                  </div>
+               	</div>
+               </div>
+
+						</form>
+						
+						<form method="post" action="#">
+							<div class="fields" id="pw_box" style="display:none;">
+													<hr />
+                     <h3 align="center">비밀번호 찾기</h3>
+               		<div class="col-6 col-12-medium" style="margin:0 auto;">
+
+                  	<div class="field">
+                  	<label>아이디를 입력해주세요.
+                     <input type="text" name="id" id="id"  placeholder="ID">
+					</label>
+					</div>
+					 <div class="field" style="height: 2.5em;">
+                  					 <input type="email" name="email" id="email" placeholder="EMAIL" style="display: inline-block; width: 60%; float: left;">
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증메일 발송</a></div>
+               					 </div>
+               					
+								<div class="field" style="margin-top: 15px;">
+                  					 <input type="text" name="author" id="author" placeholder="AUTORNUM" style="display: inline-block; width: 60%; float: left;">
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증</a></div>
+               					 </div>
+					
+                    <br>
+							<ul class="actions special">
+								<li><a href="addUser.html" class="button">찾기(alert로 결과값)</a></li>
+							</ul>
+                  </div>
+               	</div>
+
+
+						</form>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+					</footer>
+
+			</div>
+            
+
+
+
+		<!-- Scripts -->
+		
+		<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+			
+   <script>
+   var display = document.getElementById("id_box");
+   var display2 = document.getElementById("pw_box");
+   		function show_id(){
+
+   			
+   			display.style.display = "block";
+   			display2.style.display = "none";
+   		}
+   		function show_login_aca(){
+
+   			display.style.display = "none";
+   			display2.style.display = "block";
+   			}
+   		
+   </script>
+
+	</body>
+</html>

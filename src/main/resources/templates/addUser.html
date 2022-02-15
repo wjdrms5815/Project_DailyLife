@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+	Identity by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<head>
+    <title>Untitled</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../static/assets/css/main2.css" />
+    <noscript><link rel="stylesheet" href="../static/assets/css/nonscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<h1>회원가입</h1>
+						</header>
+
+						<hr />
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<input type="text" name="id" id="id" placeholder="ID" />
+								</div>
+								
+								<div class="field">
+									<input type="text" name="nickname" id="nickname" placeholder="NICKNAME" />
+								</div>
+								
+								<div class="field">
+									<input type="password" name="password" id="password" placeholder="PASSWORD" />
+								</div>
+								
+								<div class="field">
+									<input type="password" name="password" id="password" placeholder="PASSWORDCHECK" />
+								</div>
+								
+              					 <div class="field">
+                  					 <input type="email" name="email" id="email" placeholder="EMAIL" style="display: inline-block; width: 60%; float: left;">
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증메일 발송</a></div>
+               					 </div>
+               					 
+								<div class="field">
+                  					 <input type="text" name="author" id="author" placeholder="AUTORNUM" style="display: inline-block; width: 60%; float: left;">
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증</a></div>
+               					 </div>
+
+
+							</div>
+							<ul class="actions special">
+								<li><a href="../../../../../Users/ykp/Desktop/index.html" class="button">가입</a></li>
+							</ul>
+
+						</form>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+					</footer>
+
+			</div>
+
+<!-- Scripts -->
+<script>
+    if ('addEventListener' in window) {
+        window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+    }
+</script>
+
+</body>
+</html>
