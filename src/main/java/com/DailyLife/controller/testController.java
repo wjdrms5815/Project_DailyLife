@@ -1,13 +1,12 @@
 package com.DailyLife.controller;
 
 import com.DailyLife.mapper.userMapper;
-import com.DailyLife.user.User;
+import com.DailyLife.dto.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.DailyLife.mapper.*;
 
 import java.util.List;
 

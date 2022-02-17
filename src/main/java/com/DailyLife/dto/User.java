@@ -1,4 +1,4 @@
-package com.DailyLife.user;
+package com.DailyLife.dto;
 
 import lombok.Data;
 

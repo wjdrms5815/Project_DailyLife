@@ -1,6 +1,6 @@
 package com.DailyLife.mapper;
 
-import com.DailyLife.user.User;
+import com.DailyLife.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
