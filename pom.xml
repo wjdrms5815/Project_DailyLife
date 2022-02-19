@@ -41,6 +41,12 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!--mail lib-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

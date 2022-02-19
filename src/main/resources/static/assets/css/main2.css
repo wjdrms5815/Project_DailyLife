@@ -365,7 +365,7 @@ body.is-touch .tiles2 article .content {
 		font-weight: 300;
 		line-height: 2;
 		letter-spacing: 0.2em;
-		text-transform: uppercase;
+		text-transform: none;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1274,7 +1274,7 @@ body.is-touch .tiles2 article .content {
 	letter-spacing: 0.35em;
 	margin: 0 0 2.5em 0;
 	text-decoration: none;
-	text-transform: uppercase;
+	text-transform: none;
 	display: inline-block;
 }
 
@@ -1344,7 +1344,7 @@ body.is-touch .tiles2 article .content {
 	font-size: 1em;
 	font-weight: 900;
 	letter-spacing: 0.35em;
-	text-transform: uppercase;
+	text-transform: none;
 }
 
 #header nav ul li a[href="#menu"] {
