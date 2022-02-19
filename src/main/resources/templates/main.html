@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <!--
 	Identity by Pixelarity
 	pixelarity.com | hello@pixelarity.com
@@ -9,8 +10,8 @@
 		<title>Login</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/assets/css/main2.css" />
-		<noscript><link rel="stylesheet" href="../static/assets/css/noscript2.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/main2.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -20,7 +21,7 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<span class="avatar"><img src="../../../../../Users/ykp/Desktop/새%20폴더/images/pic14.jpg" alt="" /></span>
+							<span class="avatar"><img src="images/pic14.jpg" alt="" /></span>
 							<h1>LOGIN</h1>
 						</header>
 
@@ -37,7 +38,7 @@
 							</div>
 							<ul class="actions special">
 								<li><a href="index.html" class="button">GO</a></li>
-								<li><a href="addUser.html" class="button">JOIN</a></li>
+								<li><a href="addUserForm.html" class="button" th:href="@{/user/addUser}">JOIN</a></li>
 								<li><a href="findIdPw.html" class="button">FIND</a></li>
 							</ul>
 
