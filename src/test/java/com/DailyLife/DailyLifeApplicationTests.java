@@ -1,10 +1,8 @@
 package com.DailyLife;
 
-import com.DailyLife.dto.AddUserDto;
+import com.DailyLife.dto.User;
 import com.DailyLife.mapper.UserMapper;
-import com.DailyLife.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,8 +27,8 @@ class DailyLifeApplicationTests {
 
 	@Test
 	void findAllTest() {
-		List<AddUserDto> user = userMapper.findAll();
-		for (AddUserDto addUserDto : user) {
+		List<User> user = userMapper.findAll();
+		for (User addUserDto : user) {
 			System.out.println("addUserDto = " + addUserDto);
 		}
 	}
@@ -39,7 +37,7 @@ class DailyLifeApplicationTests {
 	void addUserTest() {
 		log.info("테스트 시작");
 
-		AddUserDto ad = new AddUserDto();
+		User ad = new User();
 		ad.setUserNum(1L);
 		ad.setUserId("woa0313");
 		ad.setUserName("신동민");

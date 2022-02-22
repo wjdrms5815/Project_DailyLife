@@ -1,6 +1,6 @@
 package com.DailyLife.mapper;
 
-import com.DailyLife.dto.AddUserDto;
+import com.DailyLife.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -10,8 +10,9 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    List <AddUserDto> findAll();
+    List <User> findAll();
 
-    int addUser(AddUserDto addUserDto);
+    int addUser(User user);
 
+    int login(User user);
 }

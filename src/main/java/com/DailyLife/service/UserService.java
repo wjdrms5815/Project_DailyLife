@@ -1,6 +1,6 @@
 package com.DailyLife.service;
 
-import com.DailyLife.dto.AddUserDto;
+import com.DailyLife.dto.User;
 import com.DailyLife.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +39,13 @@ public class UserService{
         return authKey.toString();
     }
 
-    public int addUser(AddUserDto addUserDto) {
-        addUserDto.setUserNum(++sequence);
-       return userMapper.addUser(addUserDto);
+    public int addUser(User user) {
+        user.setUserNum(++sequence);
+       return userMapper.addUser(user);
+    }
+
+    public int login(User user){
+        return userMapper.login(user);
     }
 
 }

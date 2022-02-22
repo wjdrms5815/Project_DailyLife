@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.DailyLife.mapper.UserMapper">
-    <select id="findAll" resultType="com.DailyLife.dto.AddUserDto" >
+    <select id="findAll" resultType="com.DailyLife.dto.User" >
         select * from user
     </select>
 
-    <insert id="addUser" parameterType="com.DailyLife.dto.AddUserDto">
+    <insert id="addUser">
         insert INTO user values (#{userNum} , #{userId} ,#{userName}, #{userPassword}, #{userEmail})
     </insert>
+
+    <select id="login" resultType="_int">
+        select count(*) from user where userId = #{userId} and userPassword = #{userPassword}
+    </select>
+
 
 </mapper>

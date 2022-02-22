@@ -1,6 +1,6 @@
 package com.DailyLife.controller;
 
-import com.DailyLife.dto.AddUserDto;
+import com.DailyLife.dto.User;
 import com.DailyLife.service.UserService;
 import com.DailyLife.validation.AddUserValidator;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -33,12 +32,12 @@ public class UserController {
 
     @GetMapping("/addUser")
     public String addUserForm(Model model) {
-        model.addAttribute("addUserDto", new AddUserDto());
+        model.addAttribute("addUserDto", new User());
         return "user/addUserForm";
     }
 
     @PostMapping("/addUser")
-    public String signUp(@Validated @ModelAttribute AddUserDto user , BindingResult bindingResult , Model model ,HttpSession session) {
+    public String signUp(@Validated @ModelAttribute User user , BindingResult bindingResult , Model model , HttpSession session) {
 
         System.out.println("user = " + user);
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
@@ -129,6 +128,23 @@ public class UserController {
         }
         return msg;
     }
+
+    @PostMapping("/main")
+    public String login(@ModelAttribute User user, Model model, HttpSession session){
+        if(userService.login(user)==1){
+            return "index";
+        }else
+            return "main";
+    }
+
+    @GetMapping("/userInfo")
+    public String userInfo(){
+        return "UserInfo";
+    }
+
+    @GetMapping("/directMessage")
+    public String directMessage() {return  "directmessage";}
+
 
 
 }

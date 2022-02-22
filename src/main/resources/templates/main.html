@@ -1,74 +1,77 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <!--
-	Identity by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+   Identity by Pixelarity
+   pixelarity.com | hello@pixelarity.com
+   License: pixelarity.com/license
 -->
 <html>
-	<head>
-		<title>Login</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main2.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+	<title>Login</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main2.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
+</head>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!-- Wrapper -->
+<div id="wrapper">
 
-				<!-- Main -->
-					<section id="main">
-						<header>
-							<span class="avatar"><img src="images/pic14.jpg" alt="" /></span>
-							<h1>LOGIN</h1>
-						</header>
+	<!-- Main -->
+	<section id="main">
+		<header>
+			<span class="avatar"><img src="images/pic14.jpg" alt="" /></span>
+			<h1>LOGIN</h1>
+		</header>
 
-						<hr />
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field">
-									<input type="text" name="id" id="id" placeholder="ID" />
-								</div>
-								<div class="field">
-									<input type="email" name="password" id="password" placeholder="PASSWORD" />
-								</div>
-
-							</div>
-							<ul class="actions special">
-								<li><a href="index.html" class="button">GO</a></li>
-								<li><a href="addUserForm.html" class="button" th:href="@{/user/addUser}">JOIN</a></li>
-								<li><a href="findIdPw.html" class="button">FIND</a></li>
-							</ul>
-
-						</form>
-						<hr />
-						<footer>
-
-							<h2>Login through SNS</h2>
-							<ul class="icons">
-								<li><a href="#" class="icon brands fa-twitter">Twitter</a></li>
-								<li><a href="#" class="icon brands fa-instagram">Instagram</a></li>
-								<li><a href="#" class="icon brands fa-facebook-f">Facebook</a></li>
-
-							</ul>
-						</footer>
-					</section>
-
-				<!-- Footer -->
-					<footer id="footer">
-					</footer>
+		<hr />
+		<form method="post" th:action="@{/user/main}">
+			<div class="fields">
+				<div class="field">
+					<!--<input type="text" id="userId" placeholder="ID" th:field="*{userId}" th:errorclass="field-error"/>-->
+					<input type="text" id="userId" placeholder="ID" name="userId"/>
+					<!--<input type="text" id="userId" placeholder="ID" th:field="*{userId}"/>-->
+				</div>
+				<div class="field">
+					<input type="password" id="userPassword" placeholder="PASSWORD" name="userPassword"/>
+				</div>
 
 			</div>
+			<ul class="actions special">
+				<li><input type="submit" class="button" value="LOGIN"></li>
+				<li><a href="user/addUserForm.html" class="button" th:href="@{/user/addUser}">JOIN</a></li>
+				<li><a href="findIdPw.html" class="button">FIND</a></li>
+			</ul>
 
-		<!-- Scripts -->
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
+		</form>
+		<hr />
+		<footer>
 
-	</body>
+			<h2>Login through SNS</h2>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter">Twitter</a></li>
+				<li><a href="#" class="icon brands fa-instagram">Instagram</a></li>
+				<li><a href="#" class="icon brands fa-facebook-f">Facebook</a></li>
+
+			</ul>
+		</footer>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script>
+	if ('addEventListener' in window) {
+		window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+		document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+	}
+</script>
+
+</body>
 </html>

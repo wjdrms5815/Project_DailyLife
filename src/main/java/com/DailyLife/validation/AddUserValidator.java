@@ -1,6 +1,6 @@
 package com.DailyLife.validation;
 
-import com.DailyLife.dto.AddUserDto;
+import com.DailyLife.dto.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
@@ -15,12 +15,12 @@ import static org.springframework.util.StringUtils.hasText;
 public class AddUserValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return AddUserDto.class.isAssignableFrom(clazz);
+        return User.class.isAssignableFrom(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        AddUserDto addUser = (AddUserDto) target;
+        User addUser = (User) target;
 
         BindingResult error = (BindingResult) errors;
 

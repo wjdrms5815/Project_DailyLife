@@ -2,11 +2,10 @@ package com.DailyLife.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class AddUserDto {
+public class User {
 
     private Long userNum;
     //(regexp = "^[a-zA-Z0-9].*$" )
