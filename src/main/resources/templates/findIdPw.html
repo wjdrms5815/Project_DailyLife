@@ -5,111 +5,115 @@
 	License: pixelarity.com/license
 -->
 <html>
-	<head>
-		<title>Login</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main2.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-						<div id="wrapper">
-
-				<!-- Main -->
-					<section id="main">
-						<header>
-					<button class="button" onclick="show_id()">아이디 찾기 </button>
-                     <button class="button" onclick="show_login_aca()">비밀번호 찾기</button>
-						</header>
+<head>
+	<title>Login</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main2.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
+	<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
+<body class="is-preload">
 
 
-						<form method="post" action="#">
-							<div class="fields" id="id_box" style="display:none;">
-													<hr />
-                     <h3 align="center">아이디 찾기</h3>
-               		<div class="col-6 col-12-medium" style="margin:0 auto;">
-                  	<div class="box">
-                     <label>가입시 사용한 이메일을 입력해주세요.
-                     <input type="email" name="email" id="email"  placeholder="EMAIL"  style="margin: 0 auto; width:80%;">
-					</label>
-                    <br>
-							<ul class="actions special">
-								<li><a href="addUserForm.html" class="button">찾기(alert로 결과값)</a></li>
-							</ul>
-                  </div>
-               	</div>
-               </div>
+<!-- Wrapper -->
+<div id="wrapper">
 
-						</form>
-						
-						<form method="post" action="#">
-							<div class="fields" id="pw_box" style="display:none;">
-													<hr />
-                     <h3 align="center">비밀번호 찾기</h3>
-               		<div class="col-6 col-12-medium" style="margin:0 auto;">
+	<!-- Main -->
+	<section id="main">
+		<header>
+			<button class="button" onclick="show_id()">아이디 찾기 </button>
+			<button class="button" onclick="show_login_aca()">비밀번호 찾기</button>
+		</header>
 
-                  	<div class="field">
-                  	<label>아이디를 입력해주세요.
-                     <input type="text" name="id" id="id"  placeholder="ID">
-					</label>
+		<div class="fields" id="id_box" style="display:none;">
+			<form method="post" action="#">
+				<hr />
+				<h3 style="text-align: center">아이디 찾기</h3>
+				<div class="col-6 col-12-medium" style="margin:0 auto;">
+					<div class="box">
+						<label>가입시 사용한 이메일을 입력해주세요.
+							<input type="email" name="userEmail" id="userEmail"  placeholder="EMAIL"  style="margin: 0 auto; width:80%;">
+						</label>
+						<br>
+						<div id="findedEmail" style="position: relative; bottom: 20px"></div>
+						<ul class="actions special">
+							<button onclick="emailSend()" type="button">찾기</button>
+						</ul>
 					</div>
-					 <div class="field" style="height: 2.5em;">
-                  					 <input type="email" name="email" id="email" placeholder="EMAIL" style="display: inline-block; width: 60%; float: left;">
-                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증메일 발송</a></div>
-               					 </div>
-               					
-								<div class="field" style="margin-top: 15px;">
-                  					 <input type="text" name="author" id="author" placeholder="AUTORNUM" style="display: inline-block; width: 60%; float: left;">
-                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#">인증</a></div>
-               					 </div>
-					
-                    <br>
-							<ul class="actions special">
-								<li><a href="addUserForm.html" class="button">찾기(alert로 결과값)</a></li>
-							</ul>
-                  </div>
-               	</div>
+				</div>
+			</form>
+		</div>
+
+		<form method="post" action="#">
+			<div class="fields" id="pw_box" style="display:none;">
+				<hr />
+				<h3 style="text-align: center">비밀번호 찾기</h3>
+				<div class="col-6 col-12-medium" style="margin:0 auto;" >
 
 
-						</form>
-					</section>
+					<div class="field" style="margin-bottom: 2%">
+						<label>아이디를 입력해주세요.
+							<input type="text" name="userEmail" id="userIdToPw" placeholder="ID" onchange="IdCheckToPw()">
+						</label>
+						<div id="findedEmailToPw" style="margin-left: -20%; margin-top: -2%; margin-bottom: -2%;"></div>
+					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-					</footer>
+					<div class="field" style="height: 2.5em; margin-top: 5%">
+						<input type="email" name="email" id="userEmailToAuth" placeholder="EMAIL" style="display: inline-block; width: 60%; float: left;" onchange="emailPatternCheck()" disabled>
+						<div style="display: inline-block; margin: 2%; font-size: 90%; margin-top: 1%;"><button type="button" onclick="AuthEmailSend()" style="cursor: pointer" id="emailSendButton" disabled>메일 전송</button></div>
+					</div>
+					<div id="CheckEmailDiv" style="margin-right: 45%; margin-top: 2%; margin-bottom: -2%; max-height: 25px; display: inline-block; overflow:hiddlen; white-space:nowrap;" ></div>
 
+						<div class="field" >
+							<input type="text" name="author" id="authorNum" placeholder="AUTORNUM" style="display: inline-block; width: 60%; float: left;" disabled>
+							<div style="display: inline-block; margin: 2%; font-size: 90%; margin-top: 1%;"><button type="button" onclick="AuthNumSend()" style="cursor:pointer" id="authorNumCheck" o disabled>인증</button></div>
+				</div>
+				<div id="CheckEmailAuthor" style="margin-left: -52%; margin-top: -1%; margin-bottom: -5%; max-height: 25px; display: inline-block; display: none; overflow:hiddlen; white-space:nowrap;">확인되었습니다.</div>
+
+					<br>
+					<ul class="actions special" style="margin-top: 1%;">
+						<li><button type="button" disabled>비밀번호 변경</button></li>
+					</ul>
+				</div>
 			</div>
-            
+
+
+		</form>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+	</footer>
+
+</div>
 
 
 
-		<!-- Scripts -->
-		
-		<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
-			
-   <script>
-   var display = document.getElementById("id_box");
-   var display2 = document.getElementById("pw_box");
-   		function show_id(){
+<!-- Scripts -->
+<script type="text/javascript" src="assets/js/findUser.js"></script>
+<script>
+	if ('addEventListener' in window) {
+		window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
+		document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+	}
+</script>
 
-   			
-   			display.style.display = "block";
-   			display2.style.display = "none";
-   		}
-   		function show_login_aca(){
+<script>
+	// let display = document.getElementById("id_box");
+	// let display2 = document.getElementById("pw_box");
+	// function show_id(){
+	//
+	// 	display.style.display = "block";
+	// 	display2.style.display = "none";
+	// }
+	// function show_login_aca(){
+	//
+	// 	display.style.display = "none";
+	// 	display2.style.display = "block";
+	// }
 
-   			display.style.display = "none";
-   			display2.style.display = "block";
-   			}
-   		
-   </script>
+</script>
 
-	</body>
+</body>
 </html>

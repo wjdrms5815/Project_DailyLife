@@ -46,29 +46,25 @@
 								</div>
 
 								<div class="field addUserInputDiv">
-									<input type="text" id="userId" placeholder="ID" th:field="*{userId}" th:errorclass="field-error"/>
+									<input type="text" id="userId" placeholder="ID" th:field="*{userId}">
 								</div>
-								<div class="field-error userError" th:errors="*{userId}" style="font-size: 12px"><p>오류입니다.</p></div>
-								
-								<div class="field addUserInputDiv">
-									<input type="text"  id="userName" placeholder="NICKNAME"  th:field="*{userName}" th:errorclass="field-error" />
-								</div>
-								<div class="field-error userError" th:errors="*{userName}" style="font-size: 12px"><p>오류입니다.</p></div>
 
 								<div class="field addUserInputDiv">
-									<input type="password" id="userPassword" placeholder="PASSWORD" th:field="*{userPassword}" th:errorclass="field-error"/>
+									<input type="text"  id="userName" placeholder="NICKNAME"  th:field="*{userName}">
 								</div>
-								<div class="field-error userError" th:errors="*{userPassword}" style="font-size: 12px"><p>오류입니다.</p></div>
+
+								<div class="field addUserInputDiv">
+									<input type="password" id="userPassword" placeholder="PASSWORD" th:field="*{userPassword}" >
+								</div>
 
 								<div class="field addUserInputDiv" >
-									<input type="password" id="userPasswordCheck" placeholder="ConfirmPW" th:field="*{userPasswordCheck}" th:errorclass="field-error" />
+									<input type="password" id="userPasswordCheck" placeholder="ConfirmPW" th:field="*{userPasswordCheck}" >
 								</div>
-								<div class="field-error userError" th:errors="*{userPasswordCheck}" style="font-size: 12px"><p>오류입니다.</p></div>
 
               					 <div class="field addUserInputDiv" >
                   					 <input type="email" id="userEmail" placeholder="EMAIL" th:field="*{userEmail}"
 											style="display: inline-block; width: 60%; float: left;">
-                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#" onclick="emailAuthorSend()">인증메일 발송</a></div>
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><button onclick="emailAuthorSend()" type="button">메일인증</button></div>
                					 </div>
 
 								<div id="emailSendText" style="font-size: 14px; position: relative; left: 20px; max-height: 15px; margin-bottom: -1%">
@@ -79,7 +75,7 @@
 									<input type="text" id="emailAuthor" placeholder="certification"
 										   th:field="*{emailAuthor}"
 										   style="display: inline-block; width: 60%; float: left;">
-									<div style="display: inline-block; margin: 2%; font-size: 90%;"><a href="#" onclick="emailAuthorCheck()">인증</a></div>
+									<div style="display: inline-block; margin: 2%; font-size: 90%;"><button onclick="emailAuthorCheck()" type="button">인증</button></div>
 								</div>
 
 								<div id="emailCheckText" style="font-size: 14px; position: relative; left: 20px; max-height: 15px; margin-bottom: -1%">
@@ -124,14 +120,11 @@
 			type:"POST",
 		}).success(function (message2) {
 			let key = $.trim(message2.key);
-
 			if(key == 'success') {
 				$("#emailCheckText").text(message2.msg);
 			}else if (key == 'fail') {
-				console.log(key);
 				$("#emailCheckText").text(message2.msg);
 			}
-
 			// $("#pwCheckResult").replaceWith(fragment);
 		});
 	}

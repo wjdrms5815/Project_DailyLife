@@ -8,6 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -48,4 +49,15 @@ public class UserService{
         return userMapper.login(user);
     }
 
+    public String findByEmail(String email) {
+
+        return userMapper.findByEmail(email).orElse("fail");
+
+    }
+
+    public int CheckById(String userId) {
+
+        return userMapper.CheckById(userId);
+
+    }
 }

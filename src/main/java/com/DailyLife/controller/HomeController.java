@@ -17,4 +17,19 @@ public class HomeController {
         return "main";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "Write";
+    }
+
+    @GetMapping("/test2")
+    public String test2() {
+        return "index";
+    }
+
+    @GetMapping("/test3")
+    public String test3() {
+        return "directmessage";
+    }
+
 }
