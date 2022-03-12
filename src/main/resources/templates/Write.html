@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <!--
 	Identity by Pixelarity
 	pixelarity.com | hello@pixelarity.com
@@ -87,6 +88,7 @@
 
 				var attZone = document.getElementById(att_zone);
 				var btnAtt = document.getElementById(btn)
+				let $files = document.getElementById("btnAtt");
 				var sel_files = [];
 
 				// 이미지와 체크 박스를 감싸고 있는 div 속성
@@ -128,9 +130,15 @@
 					for(f of files){
 						imageLoader(f);
 					}
+					selectFile(files);
 
 				}, false)
 
+				// input file 영역에 드랍된 파일들로 대체
+				let selectFile = function(files) {
+					$files.files = files;
+					console.log($files.files)
+				}
 
 
 				/*첨부된 이미리즐을 배열에 넣고 미리보기 */

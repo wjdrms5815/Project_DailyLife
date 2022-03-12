@@ -6,11 +6,19 @@
     </select>
 
     <insert id="addUser">
-        insert INTO user values (#{userNum} , #{userId} ,#{userName}, #{userPassword}, #{userEmail})
+        insert INTO user values ((select nextVal('sequence') from dual)  , #{userId} ,#{userName}, #{userPassword}, #{userEmail})
     </insert>
 
     <select id="login" resultType="_int">
         select count(*) from user where userId = #{userId} and userPassword = #{userPassword}
+    </select>
+
+    <select id="findByEmail" resultType="string">
+        select userId from user where userEmail = #{userEmail}
+    </select>
+
+    <select id="CheckById" resultType="_int">
+         select count(*) from user where userId = #{userId}
     </select>
 
 
