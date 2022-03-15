@@ -3,14 +3,12 @@ package com.DailyLife.controller;
 import com.DailyLife.dto.User;
 import com.DailyLife.service.UserService;
 import com.DailyLife.validation.AddUserValidator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -46,27 +44,9 @@ public class UserController {
 
 
     @PostMapping("/addUser")
-    public String signUp(@ModelAttribute User user , BindingResult bindingResult , Model model , HttpSession session) {
-
-        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-            System.out.println("fieldError = " + fieldError);
-        }
-
-        addUserValidator.validate(user , bindingResult);
-        if (session.getAttribute("emailCertification") == null && !bindingResult.hasErrors()) {
-            bindingResult.reject("NotEmailCertification" , "이메일 검증이 되지 않았습니다.");
-        }
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("message" , session.getAttribute("message"));
-            model.addAttribute("message2" , session.getAttribute("message2"));
-            return "user/addUserForm";
-        }
+    public String signUp(@ModelAttribute User user , Model model , HttpSession session) {
 
         log.info("user = {}" , user);
-
-//        int result = userService.addUser(user);
-//        System.out.println("result = " + result);
 
         return "index";
     }
