@@ -10,6 +10,10 @@ public class DailyLifeApplication {
 
 		SpringApplication.run(DailyLifeApplication.class, args);
 		/*테스트*/
+
+		/**
+		 * 테스트
+		 */
 	}
 
 }
