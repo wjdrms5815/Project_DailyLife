@@ -31,10 +31,10 @@
                 <ul class="logo">
                    <strong>NAME&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;
                    <input type="search">&nbsp;&nbsp;&nbsp;
-                   <li><a href="UserInfo.html" class="fas fa-user"><span class="label"></span></a></li>
+                   <li><a href="Information.html" class="fas fa-user"><span class="label"></span></a></li>
                    <li><a href="#" class="fas fa-heart" id="heart" onclick="test()"><span class="label"></span></a></li>
                    <li><a href="#" class="fab fa-pushed "><span class="label"></span></a></li>
-                   <li><a href="Write.html" class="fas fa-plus "><span class="label"></span></a></li>
+                   <li><a href="write.html" class="fas fa-plus "><span class="label"></span></a></li>
                 </ul>
              </nav>
           </div>
@@ -43,7 +43,7 @@
     </header>-->
 	<!-- Main -->
 	<section id="main">
-		<header><a href="profile.html"> ⚙ profile </a><br><br>
+		<header><a href="InfoUpdateForm.html"> ⚙ profile </a><br><br>
 			<span class="avatar"><img src="images/pic14.jpg" alt="" /></span>
 
 		</header>
@@ -51,13 +51,10 @@
 			<div class="fields">
 				<div class="field">
 					<span>post:4</span>&nbsp;<br>
-					<a href="follower.html"><span>follower:500</span></a>&nbsp;
-					<a href="following.html"><span>following:450</span></a>
+					<a th:href="@{/user/follower}" href="user/follower.html"><span>follower:500</span></a>&nbsp;
+					<a th:href="@{/user/following}" href="following.html"><span>following:450</span></a>
 				</div>
-
-
 			</div>
-
 
 		</form>
 		<span class="avatar"></span><br>

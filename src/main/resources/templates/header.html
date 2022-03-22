@@ -9,7 +9,7 @@
     <title>Login</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
+    <noscript><link rel="stylesheet" href="/assets/css/noscript2.css" /></noscript>
 </head>
 <style>
 
@@ -33,7 +33,7 @@
                 <li><a th:href="@{/user/userInfo}" class="fas fa-user"><span class="label"></span></a></li>
                 <li><a href="#" class="fas fa-heart" id="heart" onclick="test()"><span class="label"></span></a></li>
                 <li><a th:href="@{/user/directMessage}" class="fab fa-pushed "><span class="label"></span></a></li>
-                <li><a href="Write.html" class="fas fa-plus "><span class="label"></span></a></li>
+                <li><a th:href="@{/board/write}" href="write.html" class="fas fa-plus "><span class="label"></span></a></li>
             </ul>
         </nav>
     </div>

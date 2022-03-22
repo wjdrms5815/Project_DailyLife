@@ -32,16 +32,24 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-
-  /*
-    회원가입
-  */
+    /*
+      회원가입
+    */
     @GetMapping("/addUser")
     public String addUserForm(Model model) {
         model.addAttribute("user", new User());
-        return "user/addUserForm";
+        return "user/joinForm";
     }
 
+    @GetMapping("/follower")
+    public String follower() {
+        return "user/follower";
+    }
+
+    @GetMapping("/following")
+    public String following() {
+        return "user/following";
+    }
 
 
     @PostMapping("/addUser")
@@ -137,7 +145,7 @@ public class UserController {
     @GetMapping("/findUser")
     public String findUser(Model model) {
         model.addAttribute("findUser" , new User());
-        return "findIdPw";
+        return "user/findForm";
     }
 
     @ResponseBody
@@ -206,11 +214,11 @@ public class UserController {
 
     @GetMapping("/userInfo")
     public String userInfo(){
-        return "UserInfo";
+        return "user/Information";
     }
 
     @GetMapping("/directMessage")
-    public String directMessage() {return  "directmessage";}
+    public String directMessage() {return  "user/dm";}
 
     @GetMapping(value = "/checkId")
     @ResponseBody
@@ -222,12 +230,12 @@ public class UserController {
         }
         else { // result 값이 1이 아니라면 없는 아이디로 success 리턴
             return "success";  }
-        }
+    }
 
     @GetMapping(value = "/checkNickName")
     @ResponseBody
     public String userNickNameCheck(String userNickName) throws Exception {
-            log.info("들어옴" + userNickName);
+        log.info("들어옴" + userNickName);
         int result = userMapper.CheckByUserNickName(userNickName);
         if (result == 1) { // result로 받은 값이 1이라면 이미 있는 id로 fail 리턴
             return "fail";
@@ -235,7 +243,7 @@ public class UserController {
         else { // result 값이 1이 아니라면 없는 아이디로 success 리턴
             return "success";  }
     }
-    }
+}
 
 
 

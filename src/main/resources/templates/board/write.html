@@ -1,30 +1,26 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
 <!--
-	Identity by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+   Phantom by Pixelarity
+   pixelarity.com | hello@pixelarity.com
+   License: pixelarity.com/license
 -->
 <html>
 <head>
-	<title>Login</title>
+	<title>Untitled</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main2.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript2.css" /></noscript>
+	<link rel="stylesheet" href="/assets/css/main2.css" />
+	<link rel="stylesheet" href="/assets/css/noscript.css" />
 	<style>
 		html, body {
 			margin: 0;
 			height: 100%;
 			overflow: hidden;
-
-			background-image: url(images/overlay.png), linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url(../../images/bg.jpg);
-
+			background: #fafafa;
 		}
 
 		#att_zone{
-			width: 250%;
-			margin-left: -73%;
+			width: 660px;
 			min-height:150px;
 			padding:10px;
 			border:1px solid black;
@@ -34,52 +30,43 @@
 			color : #999;
 			font-size:.9em;
 		}
-		</style>
+
+
+
+	</style>
 </head>
-<body class="is-preload" style="overflow: auto">
+<body >
+<nav style="width: 25%; float:left;   height: 100%">&nbsp;</nav>
+<main style="width: 49%; float:left;  height: 100%; " >
 
-<!-- Wrapper -->
-<div id="wrapper">
+	<h2 style="text-align: center; margin-top: 10%;">게시글 등록</h2>
+	<div style="height:100%;width:100%; background: white; text-align: center; ">
+		<h4>사진 업로드</h4>
+		<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
+			<div style ="margin: 0 auto;"id='att_zone' data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+			<input type="file" multiple="multiple"  id="btnAtt"  style="display:none"/>
+		</form>
+		<div class="button icon solid fa-save" onclick="onclick=document.all.btnAtt.click()">사진추가</div>
+		<hr>
 
-	<!-- Main -->
-	<section id="main">
-		<nav style="width: 25%; float:left;   height: 100%">&nbsp;</nav>
-		<main style="width: 49%; float:left;  height: 100%; " >
+		<br>
+		<h4>게시글 작성</h4>
+		<div style="margin:3%; border: 1px solid black;">
+			<textarea name="demo-message" id="demo-message" placeholder="내용을 입력해주세요." rows="1" style="overflow: hidden; resize: none; height: 100px; overflow:scroll;"></textarea>
+		</div>
+		<input type="submit" value="게시글 등록" class="primary">
+	</div>
+</main>
+<nav style="width: 25%; float:left; height: 100%;">&nbsp;</nav>
 
-			<h2 style="text-align: center; margin-top: 10%;">게시글 등록</h2>
-			<div style="height:100%;width:100%; background: white; text-align: center; ">
-				<h4>사진 업로드</h4>
-				<form action="upload" id="uploadForm" method="post" enctype="multipart/form-data">
-					<div id='att_zone' data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
-					<input type="file" multiple="multiple"  id="btnAtt"  style="display:none"/>
-				</form>
-				<div class="button icon solid fa-save" onclick="onclick=document.all.btnAtt.click()">사진추가</div>
-				<hr>
 
-				<br>
-				<h4>게시글 작성</h4>
-
-					<textarea name="demo-message" id="demo-message" placeholder="내용을 입력해주세요." rows="1" style=" resize: none; height: 100px; width: 250%; margin-left: -73%;"></textarea>
-<br>
-				<input type="submit" value="게시글 등록" class="primary">
-			</div>
-		</main>
-		<nav style="width: 25%; float:left; height: 100%;">&nbsp;</nav>
-	</section>
-
-	<!-- Footer -->
-	<footer id="footer">
-	</footer>
-
-</div>
 
 <!-- Scripts -->
-<script>
-	if ('addEventListener' in window) {
-		window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-		document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-	}
-</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 <script>
@@ -88,7 +75,6 @@
 
 				var attZone = document.getElementById(att_zone);
 				var btnAtt = document.getElementById(btn)
-				let $files = document.getElementById("btnAtt");
 				var sel_files = [];
 
 				// 이미지와 체크 박스를 감싸고 있는 div 속성
@@ -130,15 +116,9 @@
 					for(f of files){
 						imageLoader(f);
 					}
-					selectFile(files);
 
 				}, false)
 
-				// input file 영역에 드랍된 파일들로 대체
-				let selectFile = function(files) {
-					$files.files = files;
-					console.log($files.files)
-				}
 
 
 				/*첨부된 이미리즐을 배열에 넣고 미리보기 */
