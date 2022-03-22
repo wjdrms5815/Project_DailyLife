@@ -1,14 +1,13 @@
 package com.DailyLife.controller;
 
 import com.DailyLife.dto.User;
+import com.DailyLife.mapper.UserMapper;
 import com.DailyLife.service.UserService;
-import com.DailyLife.validation.AddUserValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -28,8 +27,10 @@ public class UserController {
     public static final String AUTH_TIME_OUT_ADD = "AuthTimeOutForAdd";
     public static final String AUTH_TIME_OUT_FIND = "AuthTimeOutForFind";
     public static final String AUTH_NUM_CHECK = "authNumCheck";
-    private final AddUserValidator addUserValidator;
     private final UserService userService;
+
+    @Autowired
+    UserMapper userMapper;
 
 
   /*
@@ -211,6 +212,31 @@ public class UserController {
     @GetMapping("/directMessage")
     public String directMessage() {return  "directmessage";}
 
+    @GetMapping(value = "/checkId")
+    @ResponseBody
+    public String userIdCheck(String userId) throws Exception {
+
+        int result = userMapper.CheckById(userId);
+        if (result == 1) { // result로 받은 값이 1이라면 이미 있는 id로 fail 리턴
+            return "fail";
+        }
+        else { // result 값이 1이 아니라면 없는 아이디로 success 리턴
+            return "success";  }
+        }
+
+    @GetMapping(value = "/checkNickName")
+    @ResponseBody
+    public String userNickNameCheck(String userNickName) throws Exception {
+            log.info("들어옴" + userNickName);
+        int result = userMapper.CheckByUserNickName(userNickName);
+        if (result == 1) { // result로 받은 값이 1이라면 이미 있는 id로 fail 리턴
+            return "fail";
+        }
+        else { // result 값이 1이 아니라면 없는 아이디로 success 리턴
+            return "success";  }
+    }
+    }
 
 
-}
+
+

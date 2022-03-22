@@ -20,5 +20,7 @@ public interface UserMapper {
 
     Optional<String> findByEmail(@Param("userEmail") String email);
 
-    int CheckById(@Param("userId")String userId);
+    int CheckById(@Param("userId")String userId); // userId 중복확인
+
+    int CheckByUserNickName(String userNickName); // userNickName 중복확인
 }

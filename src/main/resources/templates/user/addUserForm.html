@@ -41,31 +41,32 @@
 						<form method="post" action="main.html" th:action th:object="${user}">
 							<div class="fields">
 
-								<div th:if="${#fields.hasGlobalErrors()}">
-									<p class="field-error userError" th:each=" err : ${#fields.globalErrors()}" th:text="${err}" ></p>
+								<div class="field addUserInputDiv">  <!--아이디-->
+									<input type="text" id="userId" placeholder="ID" th:field="*{userId}" >
+									<p id="Check_Id" style="height: 1px; display: none;"></p>
 								</div>
 
-								<div class="field addUserInputDiv">
-									<input type="text" id="userId" placeholder="ID" th:field="*{userId}">
+								<div class="field addUserInputDiv"> <!--닉네임-->
+									<input type="text"  id="userNickName" placeholder="NICKNAME"  th:field="*{userNickName}" disabled>
+									<p id="Check_NickName" style="height: 1px; display: none;"></p>
 								</div>
 
-								<div class="field addUserInputDiv">
-									<input type="text"  id="userName" placeholder="NICKNAME"  th:field="*{userName}">
+								<div class="field addUserInputDiv"> <!--비밀번호-->
+									<input type="password" id="userPassword" placeholder="PASSWORD" th:field="*{userPassword}" disabled >
+									<p id="pw" style="height: 1px; font-size:1%; display: none;"></p>
 								</div>
 
-								<div class="field addUserInputDiv">
-									<input type="password" id="userPassword" placeholder="PASSWORD" th:field="*{userPassword}" >
-								</div>
-
-								<div class="field addUserInputDiv" >
-									<input type="password" id="userPasswordCheck" placeholder="ConfirmPW" th:field="*{userPasswordCheck}" >
+								<div class="field addUserInputDiv" > <!--비밀번호 확인-->
+									<input type="password" id="userPasswordCheck" placeholder="ConfirmPW" th:field="*{userPasswordCheck}" disabled >
+									<p id="Check_Pw" style="height: 1px; font-size:1%; display: none;"></p>
 								</div>
 
               					 <div class="field addUserInputDiv" >
                   					 <input type="email" id="userEmail" placeholder="EMAIL" th:field="*{userEmail}"
-											style="display: inline-block; width: 60%; float: left;">
-                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><button onclick="emailAuthorSend()" type="button">메일인증</button></div>
+											style="display: inline-block; width: 60%; float: left;" disabled>
+                   						<div style="display: inline-block; margin: 2%; font-size: 90%;"><button id="emailButton" onclick="emailAuthorSend()" type="button" disabled>메일인증</button></div>
                					 </div>
+								<p id="Check_Email" style="height: 1px; font-size:1%; display: none;"></p>
 
 								<div id="emailSendText" style="font-size: 14px; position: relative; left: 20px; max-height: 15px; margin-bottom: -1%">
 									<p th:text="${message}"></p>
@@ -73,9 +74,9 @@
 
 								<div class="field addUserInputDiv">
 									<input type="text" id="emailAuthor" placeholder="certification"
-										   th:field="*{emailAuthor}"
+										   th:field="*{emailAuthor}" disabled
 										   style="display: inline-block; width: 60%; float: left;">
-									<div style="display: inline-block; margin: 2%; font-size: 90%;"><button onclick="emailAuthorCheck()" type="button">인증</button></div>
+									<div style="display: inline-block; margin: 2%; font-size: 90%;"><button id="authorButton" onclick="emailAuthorCheck()" type="button" disabled >인증</button></div>
 								</div>
 
 								<div id="emailCheckText" style="font-size: 14px; position: relative; left: 20px; max-height: 15px; margin-bottom: -1%">
@@ -87,7 +88,7 @@
 
 
 						<ul class="actions special" >
-							<li><input type="submit" class="button" value="회원가입" /></li>&nbsp;&nbsp;
+							<li><input type="submit" class="button" value="회원가입" id="join" disabled /></li>&nbsp;&nbsp;
 							<li><button class="button" style="font-size: 15px;" onclick="location.href='main.html'" th:onclick="|location.href='@{/}'|" type="button">취소</button></li>
 							</ul>
 
@@ -102,59 +103,15 @@
 			</div>
 
 <!-- Scripts -->
-
+						<script type="text/javascript" src="/assets/js/join.js"></script>
 <script>
+
+
     if ('addEventListener' in window) {
         window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
         document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
     }
 
-	function emailAuthorCheck() {
-		let emailAuthor=$("#emailAuthor").val();
-		let messageDTO={
-			emailAuthor:emailAuthor ,
-		};
-		$.ajax({
-			url: "/user/emailAuthorCheck",
-			data: messageDTO,
-			type:"POST",
-		}).success(function (message2) {
-			let key = $.trim(message2.key);
-			if(key == 'success') {
-				$("#emailCheckText").text(message2.msg);
-			}else if (key == 'fail') {
-				$("#emailCheckText").text(message2.msg);
-			}
-			// $("#pwCheckResult").replaceWith(fragment);
-		});
-	}
-
-	function emailAuthorSend() {
-		let userEmail=$("#userEmail").val();
-		let messageDTO={
-			userEmail:userEmail ,
-		};
-		$.ajax({
-			url: "/user/EmailAuthor",
-			data: messageDTO,
-			type:"GET",
-		}).success(function (message) {
-			const key = $.trim(message.key);
-			if(key == 'succese') {
-				console.log(message.msg)
-				$("#emailSendText").replaceAll(message.msg);
-			}
-			if(key == 'emailDuplicate') {
-				console.log(message.msg)
-				$("#emailSendText").text(message.msg);
-			}
-			else {
-				console.log(message.msg)
-				$("#emailSendText").text(message.msg);
-			}
-
-		});
-	}
 
 </script>
 

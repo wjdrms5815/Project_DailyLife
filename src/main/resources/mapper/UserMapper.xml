@@ -21,5 +21,9 @@
          select count(*) from user where userId = #{userId}
     </select>
 
+    <select id="CheckByUserNickName" resultType="_int">
+         select count(*) from user where userNickName = #{userNickName}
+    </select>
+
 
 </mapper>
