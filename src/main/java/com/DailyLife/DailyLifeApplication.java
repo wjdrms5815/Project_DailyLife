@@ -12,7 +12,7 @@ public class DailyLifeApplication {
 		/*테스트*/
 
 		/**
-		 * 테스트
+		 * 이승범테스트
 		 */
 	}
 
