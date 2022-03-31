@@ -50,7 +50,10 @@
 		<form method="post" action="#">
 			<div class="fields">
 				<div class="field">
+					<p>여기</p>
+					<p th:text ="${user.userId}"></p>
 					<span>post:4</span>&nbsp;<br>
+
 					<a th:href="@{/user/follower}" href="user/follower.html"><span>follower:500</span></a>&nbsp;
 					<a th:href="@{/user/following}" href="following.html"><span>following:450</span></a>
 				</div>
