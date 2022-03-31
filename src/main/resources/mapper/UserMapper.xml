@@ -5,8 +5,8 @@
         select * from user
     </select>
 
-    <insert id="addUser">
-        insert INTO user values ((select nextVal('sequence') from dual)  , #{userId} ,#{userName}, #{userPassword}, #{userEmail})
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="userNum">
+        insert INTO user(userId,userNickName,userPassword,userEmail) values (#{userId} ,#{userNickName}, #{userPassword}, #{userEmail})
     </insert>
 
     <select id="login" resultType="_int">

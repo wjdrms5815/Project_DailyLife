@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -32,6 +34,14 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
+    //로그아웃
+    @RequestMapping(value="logout.do",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) throws Exception {
+        log.info("logout진행중");
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "main";
+    }
     /*
       회원가입
     */
@@ -53,10 +63,9 @@ public class UserController {
 
 
     @PostMapping("/addUser")
-    public String signUp(@ModelAttribute User user , Model model , HttpSession session) {
-
+    public String signUp (@ModelAttribute User user , Model model , HttpSession session) throws NoSuchAlgorithmException {
         log.info("user = {}" , user);
-
+        userService.addUser(user);
         return "index";
     }
 

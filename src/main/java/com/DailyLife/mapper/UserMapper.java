@@ -17,7 +17,6 @@ public interface UserMapper {
     int addUser(User user);
 
     int login(User user);
-
     Optional<String> findByEmail(@Param("userEmail") String email);
 
     int CheckById(@Param("userId")String userId); // userId 중복확인
