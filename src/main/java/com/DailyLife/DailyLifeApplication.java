@@ -14,6 +14,7 @@ public class DailyLifeApplication {
 		/**
 		 * 이승범테스트
 		 */
+
 	}
 
 }
