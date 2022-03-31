@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.DailyLife.mapper.BoardMapper">
+
+
+    <insert id="addBoard" useGeneratedKeys="true" keyProperty="bno">
+        insert INTO tbl_board(userId,boardContent) values ( #{userId} ,#{boardContent})
+    </insert>
+
+    <insert id="addPhoto">
+        insert INTO tbl_userPhoto(bno,photoRandomName) values ( #{bno}, #{photoRandomName})
+    </insert>
+
+
+
+
+</mapper>
