@@ -1,5 +1,6 @@
 package com.DailyLife.service;
 
+import com.DailyLife.Sha256;
 import com.DailyLife.dto.User;
 import com.DailyLife.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import java.security.NoSuchAlgorithmException;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.util.Optional;
 import java.util.Random;
 
@@ -40,15 +44,27 @@ public class UserService{
         return authKey.toString();
     }
 
-    public int addUser(User user) {
+    public int addUser(User user) throws NoSuchAlgorithmException {
+        Sha256 encrypt = new Sha256();
+        String cryptogram = encrypt.encrypt(user.getUserPasswordCheck());
+        user.setUserPassword(cryptogram);
         user.setUserNum(++sequence);
+        log.info("암호화 : "+cryptogram);
        return userMapper.addUser(user);
     }
 
     public int login(User user){
         return userMapper.login(user);
     }
+    public void logout(HttpServletResponse response) throws  Exception{
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out =response.getWriter();
+        out.println("<script");
+        out.println("location.href=document.referrer;");
+        out.println("</script");
+        out.close();
 
+    }
     public String findByEmail(String email) {
 
         return userMapper.findByEmail(email).orElse("fail");
