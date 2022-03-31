@@ -73,7 +73,7 @@ create table user (
                       userPassword varchar(50),
                       userEmail varchar(50)
 );
-
+drop table user;
 # 제약조건 이름 걸기
 create table user (
                       userNum bigint,
@@ -102,5 +102,7 @@ drop table board;
 select count(*) from user where userId = 'test';
 
 select count(*) from user where userId = 'test'
+
+
 
 

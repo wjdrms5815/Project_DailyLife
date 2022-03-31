@@ -1,17 +1,20 @@
 package com.DailyLife.controller;
 
-import com.DailyLife.mapper.UserMapper;
-import com.DailyLife.service.UserService;
+
+import com.DailyLife.dto.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
+
+import javax.servlet.http.HttpServletRequest;
+
 
 @Slf4j
 @Controller
@@ -20,26 +23,19 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @GetMapping("/")
-    public String main() {
-        return "main";
-    }
+    public String main(HttpServletRequest request , Model model) {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("user") == null) {
+            return "main";
+        }
 
-    @GetMapping("/index")
-    public String index() { return "index";}
-
-    @GetMapping("/test")
-    public String test() {
-        return "Write";
-    }
-
-    @GetMapping("/test2")
-    public String test2() {
+        User user = (User)session.getAttribute("user");
+        model.addAttribute("user" , user);
         return "index";
     }
 
-    @GetMapping("/test3")
-    public String test3() {
-        return "directmessage";
-    }
+//    @GetMapping("/index")
+//    public String index() { return "index";}
+
 
 }

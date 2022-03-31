@@ -168,6 +168,7 @@ public class UserController {
         return result;
     }
 
+
     @ResponseBody
     @GetMapping("/findByIdToPw")
     public int findByIdToPw(@RequestParam("userId") String userId) {
@@ -216,13 +217,18 @@ public class UserController {
     @PostMapping("/main")
     public String login(@ModelAttribute User user, Model model, HttpSession session){
         if(userService.login(user)==1){
+            session.setAttribute("user" , user);
             return "index";
         }else
-            return "main";
+            return "redirect:/";
     }
 
     @GetMapping("/userInfo")
-    public String userInfo(){
+    public String userInfo(Model model , HttpSession session)
+    {
+        User user = (User) session.getAttribute("user");
+        log.info("여기 {}" , user);
+        model.addAttribute("user" , user);
         return "user/Information";
     }
 
