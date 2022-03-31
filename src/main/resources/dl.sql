@@ -73,7 +73,7 @@ create table user (
                       userPassword varchar(50),
                       userEmail varchar(50)
 );
-
+drop table user;
 # 제약조건 이름 걸기
 create table user (
                       userNum bigint,
