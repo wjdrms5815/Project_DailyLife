@@ -53,7 +53,10 @@ public class UserService{
        return userMapper.addUser(user);
     }
 
-    public int login(User user){
+    public int login(User user) throws NoSuchAlgorithmException {
+        Sha256 encrypt = new Sha256();
+        String cryptogram = encrypt.encrypt(user.getUserPassword());
+        user.setUserPassword(cryptogram);
         return userMapper.login(user);
     }
     public void logout(HttpServletResponse response) throws  Exception{

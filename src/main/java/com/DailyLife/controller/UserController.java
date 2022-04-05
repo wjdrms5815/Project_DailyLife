@@ -215,7 +215,7 @@ public class UserController {
 
 
     @PostMapping("/main")
-    public String login(@ModelAttribute User user, Model model, HttpSession session){
+    public String login(@ModelAttribute User user, Model model, HttpSession session) throws NoSuchAlgorithmException {
         if(userService.login(user)==1){
             session.setAttribute("user" , user);
             return "index";
