@@ -3534,6 +3534,7 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		#page-wrapper {
+			width: 100%;
 			height: auto;
 			padding: 1rem;
 		}
@@ -3653,6 +3654,7 @@ input, select, textarea {
 			height: auto;
 			margin: 0 0 5rem 0;
 			box-shadow: 0 0.25rem 1.5rem 0.25rem rgba(46, 43, 55, 0.5);
+			width: 100%;
 		}
 
 			#wrapper > .scrollZone {

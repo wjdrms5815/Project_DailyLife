@@ -17,13 +17,10 @@ public class HomeController {
         return "main";
     }
 
-    @GetMapping("/testIndex")
+    @GetMapping("/Index")
     public String testIndex() {
         return "index";
     }
-
-    @GetMapping("/index")
-    public String index() { return "indexsub";}
 
     @GetMapping("/test")
     public String test() {
