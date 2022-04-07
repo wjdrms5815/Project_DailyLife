@@ -3544,6 +3544,7 @@ input, select, textarea {
 
 		#page-wrapper {
 			padding: 0;
+			width: 100%;
 		}
 
 	}
@@ -3677,6 +3678,7 @@ input, select, textarea {
 
 		#wrapper {
 			box-shadow: none;
+			width: 100%;
 		}
 
 			body.is-preload #wrapper {
