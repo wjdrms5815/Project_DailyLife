@@ -46,14 +46,17 @@ public class UserService{
 
     public int addUser(User user) throws NoSuchAlgorithmException {
         Sha256 encrypt = new Sha256();
-        String cryptogram = encrypt.encrypt(user.getUserPasswordCheck());
+        String cryptogram = encrypt.encrypt(user.getUserPassword());
         user.setUserPassword(cryptogram);
         user.setUserNum(++sequence);
         log.info("암호화 : "+cryptogram);
        return userMapper.addUser(user);
     }
 
-    public int login(User user){
+    public int login(User user) throws NoSuchAlgorithmException {
+        Sha256 encrypt = new Sha256();
+        String cryptogram = encrypt.encrypt(user.getUserPassword());
+        user.setUserPassword(cryptogram);
         return userMapper.login(user);
     }
     public void logout(HttpServletResponse response) throws  Exception{

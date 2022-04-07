@@ -40,7 +40,6 @@ class DailyLifeApplicationTests {
 		User ad = new User();
 		ad.setUserId("woa0313");
 		ad.setUserPassword("1234");
-		ad.setUserPasswordCheck("12345");
 		ad.setUserEmail("ddd");
 		ad.setEmailAuthor(123);
 

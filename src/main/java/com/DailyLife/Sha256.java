@@ -1,6 +1,6 @@
+// SHA-256 단방향 암호화 코드
+
 package com.DailyLife;
-
-
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
