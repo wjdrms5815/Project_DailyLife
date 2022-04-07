@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
@@ -34,14 +33,6 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-    //로그아웃
-    @RequestMapping(value="logout.do",method = RequestMethod.GET)
-    public String logout(HttpServletRequest request) throws Exception {
-        log.info("logout진행중");
-        HttpSession session = request.getSession();
-        session.invalidate();
-        return "main";
-    }
     /*
       회원가입
     */
@@ -50,6 +41,14 @@ public class UserController {
         model.addAttribute("user", new User());
         return "user/joinForm";
     }
+
+    @PostMapping("/addUser")
+    public String signUp (@ModelAttribute User user , Model model , HttpSession session) throws NoSuchAlgorithmException {
+        log.info("user = {}" , user);
+        userService.addUser(user);
+        return "index";
+    }
+
 
     @GetMapping("/follower")
     public String follower() {
@@ -62,12 +61,6 @@ public class UserController {
     }
 
 
-    @PostMapping("/addUser")
-    public String signUp (@ModelAttribute User user , Model model , HttpSession session) throws NoSuchAlgorithmException {
-        log.info("user = {}" , user);
-        userService.addUser(user);
-        return "index";
-    }
 
     @GetMapping("/EmailAuthor")
     @ResponseBody
@@ -168,7 +161,6 @@ public class UserController {
         return result;
     }
 
-
     @ResponseBody
     @GetMapping("/findByIdToPw")
     public int findByIdToPw(@RequestParam("userId") String userId) {
@@ -217,18 +209,13 @@ public class UserController {
     @PostMapping("/main")
     public String login(@ModelAttribute User user, Model model, HttpSession session) throws NoSuchAlgorithmException {
         if(userService.login(user)==1){
-            session.setAttribute("user" , user);
             return "index";
         }else
-            return "redirect:/";
+            return "main";
     }
 
     @GetMapping("/userInfo")
-    public String userInfo(Model model , HttpSession session)
-    {
-        User user = (User) session.getAttribute("user");
-        log.info("여기 {}" , user);
-        model.addAttribute("user" , user);
+    public String userInfo(){
         return "user/Information";
     }
 
