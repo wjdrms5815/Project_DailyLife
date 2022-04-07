@@ -16,31 +16,13 @@
 </head>
 
 <body class="is-preload">
-<div th:replace="/header.html"></div>
+
 <!-- Wrapper -->
 <div id="wrapper">
+	<div class="fields" style="text-align: center">
+		<a th:href="@{/Index}" class="button primary">HOME</a>
+	</div><br>
 
-	<!-- Header -->
-
-	<!--<header id="header" >
-
-       <div class="inner" >
-
-          <div class="align-center" >
-             <nav>
-                <ul class="logo">
-                   <strong>NAME&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;
-                   <input type="search">&nbsp;&nbsp;&nbsp;
-                   <li><a href="Information.html" class="fas fa-user"><span class="label"></span></a></li>
-                   <li><a href="#" class="fas fa-heart" id="heart" onclick="test()"><span class="label"></span></a></li>
-                   <li><a href="#" class="fab fa-pushed "><span class="label"></span></a></li>
-                   <li><a href="write.html" class="fas fa-plus "><span class="label"></span></a></li>
-                </ul>
-             </nav>
-          </div>
-
-       </div>
-    </header>-->
 	<!-- Main -->
 	<section id="main">
 		<header><a href="InfoUpdateForm.html"> ⚙ profile </a><br><br>
@@ -50,8 +32,7 @@
 		<form method="post" action="#">
 			<div class="fields">
 				<div class="field">
-					<p>여기</p>
-					<p th:text ="${user.userId}"></p>
+
 					<span>post:4</span>&nbsp;<br>
 
 					<a th:href="@{/user/follower}" href="user/follower.html"><span>follower:500</span></a>&nbsp;
