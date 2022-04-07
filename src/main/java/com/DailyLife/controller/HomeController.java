@@ -17,8 +17,13 @@ public class HomeController {
         return "main";
     }
 
+    @GetMapping("/testIndex")
+    public String testIndex() {
+        return "index";
+    }
+
     @GetMapping("/index")
-    public String index() { return "index";}
+    public String index() { return "indexsub";}
 
     @GetMapping("/test")
     public String test() {
@@ -27,7 +32,7 @@ public class HomeController {
 
     @GetMapping("/test2")
     public String test2() {
-        return "index";
+        return "indexsub";
     }
 
     @GetMapping("/test3")
