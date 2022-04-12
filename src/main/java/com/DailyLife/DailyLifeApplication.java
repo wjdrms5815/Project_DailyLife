@@ -16,7 +16,7 @@ public class DailyLifeApplication {
 		 */
 
 		/**
-		 * #45테스트
+		 * #45테스트 진짜 마지막
 		 */
 
 	}
