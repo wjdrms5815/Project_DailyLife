@@ -36,6 +36,7 @@ public class UserController {
     /*
       회원가입
     */
+
     @GetMapping("/addUser")
     public String addUserForm(Model model) {
         model.addAttribute("user", new User());
@@ -47,6 +48,13 @@ public class UserController {
         log.info("user = {}" , user);
         userService.addUser(user);
         return "index";
+    }
+
+    @PostMapping("/test")
+    @ResponseBody
+    public String Test(User user){
+        System.out.println("user = " + user);
+        return "ok";
     }
 
 
@@ -119,7 +127,7 @@ public class UserController {
     @ResponseBody
     public Map<String, String > AuthorCheck(String emailAuthor , HttpSession session) {
 
-
+        System.out.println("emailAuthor = " + emailAuthor);
 
         String authKey = (String)session.getAttribute("authKey");
         Map<String , String > msg = new HashMap<>();
@@ -207,11 +215,18 @@ public class UserController {
 
 
     @PostMapping("/main")
-    public String login(@ModelAttribute User user, Model model, HttpSession session) throws NoSuchAlgorithmException {
-        if(userService.login(user)==1){
+    public String login(@ModelAttribute User userLoginRequest, Model model, HttpSession session) throws NoSuchAlgorithmException {
+        if(userService.login(userLoginRequest)==1){
+            session.setAttribute("user" , findByUserId(userLoginRequest.getUserId()));
             return "index";
         }else
             return "main";
+    }
+
+    private User findByUserId(String userId) {
+
+        return userMapper.findByUserId(userId);
+
     }
 
     @GetMapping("/userInfo")
@@ -237,7 +252,6 @@ public class UserController {
     @GetMapping(value = "/checkNickName")
     @ResponseBody
     public String userNickNameCheck(String userNickName) throws Exception {
-        log.info("들어옴" + userNickName);
         int result = userMapper.CheckByUserNickName(userNickName);
         if (result == 1) { // result로 받은 값이 1이라면 이미 있는 id로 fail 리턴
             return "fail";

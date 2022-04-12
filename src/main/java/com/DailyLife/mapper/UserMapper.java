@@ -14,6 +14,8 @@ public interface UserMapper {
 
     List <User> findAll();
 
+    User findByUserId(String loginId);
+
     int addUser(User user);
 
     int login(User user);
