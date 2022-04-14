@@ -29,9 +29,7 @@ public class UserController {
     public static final String AUTH_TIME_OUT_FIND = "AuthTimeOutForFind";
     public static final String AUTH_NUM_CHECK = "authNumCheck";
     private final UserService userService;
-
-    @Autowired
-    UserMapper userMapper;
+    private final UserMapper userMapper;
 
     /*
       회원가입
@@ -213,12 +211,11 @@ public class UserController {
     }
 
 
-
     @PostMapping("/main")
     public String login(@ModelAttribute User userLoginRequest, Model model, HttpSession session) throws NoSuchAlgorithmException {
         if(userService.login(userLoginRequest)==1){
             session.setAttribute("user" , findByUserId(userLoginRequest.getUserId()));
-            return "index";
+            return "redirect:/index";
         }else
             return "main";
     }
